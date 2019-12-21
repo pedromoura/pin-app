@@ -12,6 +12,7 @@
 		"react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
 		"react/prop-types": "warn",
 		"import/prefer-default-export": "off",
-		"no-underscore-dangle": "off"
+		"no-underscore-dangle": "off",
+		"react/forbid-prop-types": "off"
 	}
   }

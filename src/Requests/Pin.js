@@ -1,5 +1,5 @@
 export const validatePin = (pin) => (
-  pin === '1524'
+  pin === '1991'
 );
 
 export default validatePin;

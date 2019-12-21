@@ -16,7 +16,6 @@ class PinKeyboard extends Component {
         onChangePin,
       } = this.props;
       onChangePin(value);
-      console.log(value);
     }
 
     _onClickDelete = () => {
@@ -24,7 +23,6 @@ class PinKeyboard extends Component {
         onDeletePin,
       } = this.props;
       onDeletePin();
-      console.log('delete');
     }
 
     render() {
@@ -47,8 +45,6 @@ class PinKeyboard extends Component {
                   </Grid>
                 ))
             }
-          </Grid>
-          <Grid container item spacing={2} xs={12}>
             <Grid item xs={4} />
             <Grid item xs={4}>
               <Button
