@@ -34,4 +34,17 @@ describe('Test button suite', () => {
     wrapper.simulate('click');
     expect(mockFn).toHaveBeenCalled();
   });
+
+  test('button disabled', () => {
+    const wrapper = shallow(
+      <Button
+        id="btnTeste"
+        onClick={mockFn}
+        isDisabled
+      >
+        <span>TestLabel</span>
+      </Button>,
+    );
+    expect(wrapper.find(Fab).props().disabled).toBe(true);
+  });
 });

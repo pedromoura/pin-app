@@ -11,6 +11,17 @@ import * as PinActions from '../../Actions/pin';
 const availableButtons = new Array(9).fill().map((v, index) => String(index + 1));
 
 export class PinKeyboard extends Component {
+  componentDidUpdate() {
+    const {
+      attempts,
+      resetAttemps,
+    } = this.props;
+
+    if (attempts === 3) {
+      setTimeout(resetAttemps, 30000);
+    }
+  }
+
     _onClickKey = (value) => {
       const {
         onChangePin,
@@ -26,6 +37,11 @@ export class PinKeyboard extends Component {
     }
 
     render() {
+      const {
+        attempts,
+      } = this.props;
+
+      const isDisabled = attempts === 3;
       return (
         <>
           <Grid container item spacing={2} xs={12}>
@@ -38,6 +54,7 @@ export class PinKeyboard extends Component {
                   >
                     <Button
                       id={`btn_${value}`}
+                      isDisabled={isDisabled}
                       onClick={() => this._onClickKey(value)}
                     >
                       <span>{value}</span>
@@ -49,6 +66,7 @@ export class PinKeyboard extends Component {
             <Grid item xs={4}>
               <Button
                 id="btn_0"
+                isDisabled={isDisabled}
                 onClick={() => this._onClickKey('0')}
               >
                 <span>{0}</span>
@@ -57,6 +75,7 @@ export class PinKeyboard extends Component {
             <Grid item xs={4}>
               <Button
                 id="delete"
+                isDisabled={isDisabled}
                 onClick={this._onClickDelete}
               >
                 <BackspaceIcon />
@@ -68,14 +87,20 @@ export class PinKeyboard extends Component {
     }
 }
 
+const mapStateToProps = (state) => ({
+  attempts: state.pin.attempts,
+});
+
 const mapDispatchToProps = (dispatch) => bindActionCreators(PinActions, dispatch);
 
 PinKeyboard.propTypes = {
   onChangePin: PropTypes.func.isRequired,
   onDeletePin: PropTypes.func.isRequired,
+  attempts: PropTypes.number.isRequired,
+  resetAttemps: PropTypes.func.isRequired,
 };
 
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps,
 )(PinKeyboard);

@@ -19,6 +19,7 @@ describe('Pin Actions test suite', () => {
 
   test('validate pin action', () => {
     const expectedActions = [
+      { type: PinActions.ADD_ATTEMPT },
       { type: PinActions.CHANGE_PIN_VALID_STATE, isPinValid: false },
       { type: PinActions.RESET_PIN },
     ];
@@ -32,6 +33,24 @@ describe('Pin Actions test suite', () => {
   test('on delete pin', () => {
     expect(PinActions.onDeletePin()).toEqual({
       type: 'DELETE_PIN_VALUE',
+    });
+  });
+
+  test('reset attempt', () => {
+    expect(PinActions.resetAttemps()).toEqual({
+      type: 'RESET_ATTEMPT',
+    });
+  });
+
+  test('valid pin state', () => {
+    const expectedActions = [
+      { type: PinActions.RESET_ATTEMPT },
+      { type: PinActions.CHANGE_PIN_VALID_STATE, isPinValid: true },
+    ];
+
+    const store = mockStore({ pin: { pin: '1234' } });
+    return store.dispatch(PinActions.validPinState(true)).then(() => {
+      expect(store.getActions()).toEqual(expectedActions);
     });
   });
 });

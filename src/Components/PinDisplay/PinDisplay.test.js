@@ -13,6 +13,7 @@ describe('Test Pin Display suite', () => {
         pinValue=""
         isPinValid={false}
         isPinChecked={false}
+        attempts={0}
       />,
     );
     expect(wrapper.find(Grid).length).toBe(1);
@@ -37,6 +38,7 @@ describe('Test Pin Display suite', () => {
         pinValue="1252"
         isPinValid={false}
         isPinChecked
+        attempts={0}
       />,
     );
     expect(wrapper.find(Grid).length).toBe(1);
@@ -53,6 +55,7 @@ describe('Test Pin Display suite', () => {
         pinValue="1252"
         isPinValid
         isPinChecked
+        attempts={0}
       />,
     );
     expect(wrapper.find(Grid).length).toBe(1);
@@ -62,5 +65,24 @@ describe('Test Pin Display suite', () => {
     expect(wrapper.find('#CheckedPinResult').length).toBe(1);
     expect(wrapper.find('#CheckedPinResult').length).toBe(1);
     expect(wrapper.find('span').text()).toBe('OK');
+  });
+
+  test('render pin display with 3 attempts', () => {
+    const wrapper = shallow(
+      <PinDisplay
+        pinValue="1252"
+        isPinValid
+        isPinChecked
+        attempts={3}
+      />,
+    );
+    expect(wrapper.find(Grid).length).toBe(1);
+    expect(wrapper.find(Paper).length).toBe(1);
+    expect(wrapper.find('span').length).toBe(1);
+    expect(wrapper.find('#PinNumber').length).toBe(0);
+    expect(wrapper.find('#CheckedPinResult').length).toBe(0);
+    expect(wrapper.find('#CheckedPinResult').length).toBe(0);
+    expect(wrapper.find('#LockedSpan').length).toBe(1);
+    expect(wrapper.find('span').text()).toBe('LOCKED');
   });
 });

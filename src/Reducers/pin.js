@@ -3,12 +3,15 @@ import {
   CHANGE_PIN_VALID_STATE,
   DELETE_PIN_VALUE,
   RESET_PIN,
+  ADD_ATTEMPT,
+  RESET_ATTEMPT,
 } from '../Actions/pin';
 
 const initialState = {
   pin: '',
   isPinChecked: false,
   isValid: false,
+  attempts: 0,
 };
 
 const pin = (state = initialState, action) => {
@@ -35,6 +38,16 @@ const pin = (state = initialState, action) => {
       return {
         ...state,
         pin: '',
+      };
+    case ADD_ATTEMPT:
+      return {
+        ...state,
+        attempts: state.attempts + 1,
+      };
+    case RESET_ATTEMPT:
+      return {
+        ...state,
+        attempts: 0,
       };
     default:
       return {

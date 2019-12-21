@@ -12,36 +12,45 @@ export const PinDisplay = ({
   pinValue,
   isPinValid,
   isPinChecked,
-}) => (
-  <Grid item xs={12}>
-    <Paper
-      title="Pin Code"
-      style={{ margin: 15 }}
-    >
-      {
-        isPinChecked && (
-          <span id="CheckedPinResult">{isPinValid ? 'OK' : 'ERROR'}</span>
-        )
+  attempts,
+}) => {
+  const isLocked = attempts === 3;
+  return (
+    <Grid item xs={12}>
+      <Paper
+        title="Pin Code"
+        style={{ margin: 15 }}
+        bodyComponent="p"
+      >
+        {
+          isLocked && (<span id="LockedSpan">LOCKED</span>)
+        }
+        {
+          !isLocked && isPinChecked && (
+            <span id="CheckedPinResult">{isPinValid ? 'OK' : 'ERROR'}</span>
+          )
+        }
+        {
+          !isLocked && !isPinChecked && (
+            <span id="PinNumber" style={{ padding: 10 }}>{maskPin(pinValue)}</span>
+          )
       }
-      {
-        !isPinChecked && (
-        <span id="PinNumber" style={{ padding: 10 }}>{maskPin(pinValue)}</span>
-        )
-      }
-    </Paper>
-  </Grid>
-);
-
+      </Paper>
+    </Grid>
+  );
+};
 const mapStateToProps = (state) => ({
   pinValue: state.pin.pin,
   isPinValid: state.pin.isValid,
   isPinChecked: state.pin.isPinChecked,
+  attempts: state.pin.attempts,
 });
 
 PinDisplay.propTypes = {
   isPinChecked: PropTypes.bool.isRequired,
   isPinValid: PropTypes.bool.isRequired,
   pinValue: PropTypes.string.isRequired,
+  attempts: PropTypes.number.isRequired,
 };
 
 export default connect(

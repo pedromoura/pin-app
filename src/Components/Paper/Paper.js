@@ -8,6 +8,7 @@ const Paper = ({
   title,
   elevation,
   style,
+  bodyComponent,
 }) => (
   <MaterialPaper
     elevation={elevation}
@@ -16,7 +17,7 @@ const Paper = ({
     <Typography variant="h5" component="h3">
       {title}
     </Typography>
-    <Typography component="p">
+    <Typography component={bodyComponent}>
       {children}
     </Typography>
   </MaterialPaper>
@@ -26,6 +27,7 @@ Paper.defaultProps = {
   style: {},
   title: '',
   elevation: 2,
+  bodyComponent: 'div',
 };
 
 Paper.propTypes = {
@@ -33,6 +35,7 @@ Paper.propTypes = {
   elevation: PropTypes.number,
   children: PropTypes.node.isRequired,
   style: PropTypes.object,
+  bodyComponent: PropTypes.string,
 };
 
 export default Paper;
