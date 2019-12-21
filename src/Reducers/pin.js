@@ -28,6 +28,7 @@ const pin = (state = initialState, action) => {
     case DELETE_PIN_VALUE:
       return {
         ...state,
+        isPinChecked: false,
         pin: [...state.pin].filter((val, i) => i !== state.pin.length - 1).join(''),
       };
     case RESET_PIN:

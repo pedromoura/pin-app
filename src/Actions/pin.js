@@ -5,17 +5,17 @@ export const CHANGE_PIN_VALID_STATE = 'CHANGE_PIN_VALID_STATE';
 export const DELETE_PIN_VALUE = 'DELETE_PIN_VALUE';
 export const RESET_PIN = 'RESET_PIN';
 
-const changePinValue = (pinValue) => ({
+export const changePinValue = (pinValue) => ({
   type: CHANGE_PIN_VALUE,
   pinValue,
 });
 
-const validPinState = (isPinValid) => ({
+export const validPinState = (isPinValid) => ({
   type: CHANGE_PIN_VALID_STATE,
   isPinValid,
 });
 
-const resetPin = () => ({
+export const resetPin = () => ({
   type: RESET_PIN,
 });
 
@@ -33,9 +33,7 @@ export const onChangePin = (value) => async (dispatch, getState) => {
   if (pin.length < 4) {
     dispatch(changePinValue(value));
   }
-  if (pin.length === 3) {
-    dispatch(validatePin());
-  }
+  dispatch(validatePin());
 };
 
 export const onDeletePin = () => ({

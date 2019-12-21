@@ -13,6 +13,7 @@
 		"react/prop-types": "warn",
 		"import/prefer-default-export": "off",
 		"no-underscore-dangle": "off",
-		"react/forbid-prop-types": "off"
+		"react/forbid-prop-types": "off",
+		"import/no-named-as-default": "off"
 	}
   }

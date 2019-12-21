@@ -9,7 +9,7 @@ const style = () => ({
   },
 });
 
-const Button = ({
+export const Button = ({
   id,
   onClick,
   children,

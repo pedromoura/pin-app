@@ -10,7 +10,7 @@ import * as PinActions from '../../Actions/pin';
 
 const availableButtons = new Array(9).fill().map((v, index) => String(index + 1));
 
-class PinKeyboard extends Component {
+export class PinKeyboard extends Component {
     _onClickKey = (value) => {
       const {
         onChangePin,
@@ -48,8 +48,8 @@ class PinKeyboard extends Component {
             <Grid item xs={4} />
             <Grid item xs={4}>
               <Button
-                id={0}
-                onClick={() => this._onClickKey(0)}
+                id="btn_0"
+                onClick={() => this._onClickKey('0')}
               >
                 <span>{0}</span>
               </Button>

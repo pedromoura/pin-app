@@ -24,12 +24,14 @@ const Paper = ({
 
 Paper.defaultProps = {
   style: {},
+  title: '',
+  elevation: 2,
 };
 
 Paper.propTypes = {
-  title: PropTypes.string.isRequired,
-  elevation: PropTypes.number.isRequired,
-  children: PropTypes.element.isRequired,
+  title: PropTypes.string,
+  elevation: PropTypes.number,
+  children: PropTypes.node.isRequired,
   style: PropTypes.object,
 };
 

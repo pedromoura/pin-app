@@ -8,7 +8,7 @@ export const maskPin = (pinValue) => (
   [...pinValue].map((value, i) => (i !== pinValue.length - 1 ? '*' : value)).join('')
 );
 
-const PinDisplay = ({
+export const PinDisplay = ({
   pinValue,
   isPinValid,
   isPinChecked,
@@ -20,12 +20,12 @@ const PinDisplay = ({
     >
       {
         isPinChecked && (
-          <span>{isPinValid ? 'OK' : 'ERROR'}</span>
+          <span id="CheckedPinResult">{isPinValid ? 'OK' : 'ERROR'}</span>
         )
       }
       {
         !isPinChecked && (
-        <span style={{ padding: 10 }}>{maskPin(pinValue)}</span>
+        <span id="PinNumber" style={{ padding: 10 }}>{maskPin(pinValue)}</span>
         )
       }
     </Paper>
