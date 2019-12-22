@@ -12,6 +12,7 @@ export const Button = ({
     id={id}
     onClick={onClick}
     disabled={isDisabled}
+    color="primary"
   >
     {children}
   </Fab>

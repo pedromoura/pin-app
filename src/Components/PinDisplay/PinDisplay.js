@@ -19,7 +19,7 @@ export const PinDisplay = ({
     <Grid item xs={12}>
       <Paper
         title="Pin Code"
-        style={{ margin: 15 }}
+        style={{ margin: 10 }}
         bodyComponent="p"
       >
         {
